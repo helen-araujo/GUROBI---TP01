@@ -57,12 +57,13 @@ public class Gurobi04TP {
             modelo.addConstr(funcao, GRB.LESS_EQUAL,700, "restricaoFivelaM2");
             
             funcao = new GRBLinExpr();
+            funcao.addTerm(2, x);
             funcao.addTerm(1, y);
             modelo.addConstr(funcao, GRB.LESS_EQUAL,1000, "restricaoTempoM2");
             
-            funcao = new GRBLinExpr();
-            funcao.addTerm(1, x);
-            modelo.addConstr(funcao, GRB.LESS_EQUAL,500, "restricaoTempoM1");
+           // funcao = new GRBLinExpr();
+            //funcao.addTerm(1, x);
+            //modelo.addConstr(funcao, GRB.LESS_EQUAL,500, "restricaoTempoM1");
             
             //otimizar
             modelo.optimize();

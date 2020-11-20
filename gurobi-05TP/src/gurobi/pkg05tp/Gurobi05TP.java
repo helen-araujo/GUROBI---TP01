@@ -8,6 +8,8 @@ package gurobi.pkg05tp;
 
 
 import gurobi.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -74,7 +76,8 @@ public class Gurobi05TP {
             System.out.println("Objetivo: "+ modelo.get(GRB.DoubleAttr.ObjVal));
         }            
             catch (GRBException ex) {
-            Logger.getLogger(Gurobi05TP.class.getName()).log(Level.SEVERE, null, ex);
+
+                Logger.getLogger(Gurobi05TP.class.getName()).log(Level.SEVERE, null, ex);
         }
         } 
     }

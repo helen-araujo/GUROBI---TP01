@@ -44,16 +44,17 @@ public class Gurobi03TP {
             funcao.addTerm(10000, y);
             modelo.setObjective(funcao, GRB.MAXIMIZE);
             
+            funcao = new GRBLinExpr();
+            funcao.addTerm(20, x);
+            funcao.addTerm(10, y);
+            modelo.addConstr(funcao, GRB.LESS_EQUAL, 80, "restricaoMusica");
             //funcao restricao
             funcao = new GRBLinExpr();
             funcao.addTerm(1, x);
             funcao.addTerm(1, y);
             modelo.addConstr(funcao, GRB.GREATER_EQUAL, 5, "restricaoPropaganda");
             
-            funcao = new GRBLinExpr();
-            funcao.addTerm(20, x);
-            funcao.addTerm(10, y);
-            modelo.addConstr(funcao, GRB.LESS_EQUAL, 80, "restricaoMusica");
+            
             
             //otimizar
             modelo.optimize();
