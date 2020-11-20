@@ -38,7 +38,7 @@ public class Gurobi01TP {
           GRBModel modelo = new GRBModel(env);
           
           //cria as variaveis de decisão - minimo
-          GRBVar x = modelo.addVar(0.0,GRB.INFINITY, 0.0, GRB.CONTINUOUS, "x");
+          GRBVar x = modelo.addVar(0.0,GRB.INFINITY,0.0, GRB.CONTINUOUS, "x");
           GRBVar y = modelo.addVar(0.0,GRB.INFINITY, 0.0, GRB.CONTINUOUS, "y");
           
           //construir a função objetiva vazia
@@ -58,6 +58,13 @@ public class Gurobi01TP {
           
           //criar a desigualdade
           modelo.addConstr(funcao, GRB.LESS_EQUAL, 6.0, "restricao01");
+          
+          funcao = new GRBLinExpr();
+          funcao.addTerm(10.0, x);
+          funcao.addTerm(12.0, y);
+          
+          //criar a desigualdade
+          modelo.addConstr(funcao, GRB.LESS_EQUAL, 60.0, "restricao02");
           
           //otimizar o modelo
           modelo.optimize();
